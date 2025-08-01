@@ -1,0 +1,12 @@
+[project]
+name = "mcp-practice"
+version = "0.1.0"
+description = "An MCP Practice project"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "anthropic>=0.60.0",
+    "arxiv>=2.2.0",
+    "mcp>=1.12.3",
+    "python-dotenv>=1.1.1",
+]
