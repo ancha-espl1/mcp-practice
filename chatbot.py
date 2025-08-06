@@ -82,7 +82,7 @@ def execute_tool(tool_name, tool_args):
 # Initialize OpenAI client
 load_dotenv()
 client = OpenAI()
-tool_keywords = ["paper", "arxiv", "research", "author", "summary", "PDF", "published", "PDF"]
+tool_keywords = ["paper", "arxiv", "research", "author", "summary", "PDF", "published"]
 
 def process_query(query, messages):
     """

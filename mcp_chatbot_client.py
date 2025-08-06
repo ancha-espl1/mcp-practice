@@ -17,9 +17,9 @@ class MCP_ChatBot:
         self.openai = OpenAI()
         self.available_tools: List[dict] = []
     
-    async def process_query(self, query):
+    async def process_query(self, query, messages):
         """Process a query using OpenAI with MCP tools"""
-        messages = [{'role': 'user', 'content': query}]
+        messages.append({'role': 'user', 'content': query})
         
         response = self.openai.chat.completions.create(
             max_tokens=2024,
@@ -71,18 +71,20 @@ class MCP_ChatBot:
             else:
                 # No more tool calls, we're done
                 process_query = False
+        
+        return messages
     
     async def chat_loop(self):
         """Run an interactive chat loop"""
         print("\nMCP Chatbot Started!")
         print("Type your queries or 'quit' to exit.")
-        
+        messages = []
         while True:
             try:
                 query = input("\nQuery: ").strip()
                 if query.lower() == 'quit':
                     break
-                await self.process_query(query)
+                messages = await self.process_query(query, messages)
                 print("\n")
             except Exception as e:
                 print(f"\nError: {str(e)}")
