@@ -161,3 +161,5 @@ def process_query(query, messages):
                 process_query = False
     except Exception as e:
         print(f"Error inside process_query: {str(e)}")
+        
+    return messages

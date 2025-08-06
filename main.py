@@ -1,4 +1,4 @@
-from mcp_server import process_query
+from chatbot import process_query
 
 def chat_Loop():
     print("Type your queries or 'quit' to exit.")
@@ -8,7 +8,7 @@ def chat_Loop():
             query = input("\nQuery: ").strip()
             if query.lower() == 'quit':
                 break
-            process_query(query, messages)
+            messages = process_query(query, messages)
             print("\n")
         except Exception as e:
             print(f"\nError: {str(e)}")
